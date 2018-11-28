@@ -8,7 +8,7 @@ if ($link->connect_error) {
 
 if (isset($_POST['SignUp']) and $_POST['pword'] === $_POST['confirm_pword']) {
 $hash = password_hash($_POST['confirm_pword'], PASSWORD_DEFAULT);
-$sql = "INSERT INTO profile (First_Name, Last_Name, Username, Email, Password) VALUES (?, ?, ?, ?, ?)";
+$sql = "INSERT INTO login (First_Name, Last_Name, Username, Email, Password) VALUES (?, ?, ?, ?, ?)";
 $stmt = mysqli_prepare($link, $sql);
 $stmt->bind_param("sssss", $_POST['first_name'], $_POST['last_name'], $_POST['user_name'], $_POST['email'], $hash);
 // $stmt->execute();

@@ -26,7 +26,7 @@ include '../include/sub_header.php';
                        <ul>
                           <li><a href="std_staff.php">Student Labor Staff</a></li>
                           <li><a href="signup.html">Bonner Scholar</a></li>
-                          <li><a href="signup.html">Staff</a></li>
+                          <li><a href="staff.php">Staff</a></li>
                           <li><a href="signup.html">Service Learning Student</a></li>
                           <li><a href="signup.html">Faculty</a></li>
                           <li><a href="signup.html">Student Volunteer</a></li>

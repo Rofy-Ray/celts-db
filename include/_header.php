@@ -20,6 +20,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="../vendors/form-helpers/css/bootstrap-formhelpers.min.css" rel="stylesheet">
 <link href="../vendors/select/bootstrap-select.min.css" rel="stylesheet">
 <link href="../vendors/tags/css/bootstrap-tags.css" rel="stylesheet">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <!-- Custom Theme files -->
 <link href="../css/main_style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="../css/styles.css" rel="stylesheet">
@@ -37,6 +38,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   crossorigin="anonymous"></script>
 <script src="../js/signup_script.js"></script>
 <!-- <script src="../js/login_script.js"></script> -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 </head>
 <body>
   <div class="content">

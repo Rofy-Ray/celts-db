@@ -4,7 +4,7 @@ session_start();
 
 function login($myusername,$mypassword){
     global $link;
-    $query = "SELECT * FROM profile WHERE Username = '$myusername'";
+    $query = "SELECT * FROM login WHERE Username = '$myusername'";
 
     $result_set = mysqli_query($link,$query);
         if (mysqli_num_rows($result_set) === 1) {

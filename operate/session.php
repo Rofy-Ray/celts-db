@@ -4,7 +4,7 @@ session_start();
 
 $user_check = $_SESSION['login_user'];
 
-$ses_sql = mysqli_query($link,"select First_Name from profile where First_Name = '$user_check' ");
+$ses_sql = mysqli_query($link,"select First_Name from login where First_Name = '$user_check' ");
 
 $row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
 
