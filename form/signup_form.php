@@ -19,7 +19,7 @@ include '../include/_header.php';
       <div class="wthree-text">
         <label class="anim">
           <input type="checkbox" class="checkbox" required="">
-          <p>I Agree To The <a href="terms&conditions.pdf">Terms & Conditions</a></p>
+          <p>I Agree To The <a href="terms&conditions.pdf"  target="_blank">Terms & Conditions</a></p>
         </label>
         <div class="clear"> </div>
       </div>
