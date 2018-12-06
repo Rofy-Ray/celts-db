@@ -25,12 +25,12 @@ include '../include/sub_header.php';
                      <!-- Sub menu -->
                      <ul>
                        <li><a href="std_staff.php">Student Labor Staff</a></li>
-                       <li><a href="signup.html">Bonner Scholar</a></li>
+                       <li><a href="#">Bonner Scholar</a></li>
                        <li><a href="staff.php">Staff</a></li>
-                       <li><a href="signup.html">Service Learning Student</a></li>
-                       <li><a href="signup.html">Faculty</a></li>
-                       <li><a href="signup.html">Student Volunteer</a></li>
-                       <li><a href="signup.html">Community Partner</a></li>
+                       <li><a href="#">Service Learning Student</a></li>
+                       <li><a href="#">Faculty</a></li>
+                       <li><a href="std_vol.php">Student Volunteer</a></li>
+                       <li><a href="#">Community Partner</a></li>
                     </ul>
                 </li>
             </ul>

@@ -27,26 +27,28 @@ include '../config/open_connect.php';
                        <ul>
                           <li><a href="std_staff.php">Student Labor Staff</a></li>
                           <li><a href="#">Bonner Scholar</a></li>
-                          <li class="current"><a href="#">Staff</a></li>
+                          <li><a href="staff.php">Staff</a></li>
                           <li><a href="#">Service Learning Student</a></li>
                           <li><a href="#">Faculty</a></li>
-                          <li><a href="std_vol.php">Student Volunteer</a></li>
+                          <li class="current"><a href="#">Student Volunteer</a></li>
                           <li><a href="#">Community Partner</a></li>
                       </ul>
                   </li>
               </ul>
            </div>
            <div style="margin-top:5px; margin-bottom:30px;">
-               <button type="button" class="btn btn-lg btn-block btn-primary" id="staffButton">Add Staff</button>
+               <button type="button" class="btn btn-lg btn-block btn-primary" id="staffButton">Add Volunteer</button>
              </div>
-
+           <div style="margin-top:5px; margin-bottom:30px;">
+               <button type="button" class="btn btn-lg btn-block btn-primary" id="timeButton">Record Time</button>
+             </div>
     </div>
 
     <div class="col-md-10">
-      <form action="../operate/add_staff.php" method="post" id="addForm">
+      <form action="../operate/add_std_vol.php" method="post" id="addForm">
       <div class="content-box-large">
         <div class="panel-heading">
-              <div class="panel-title">ADD STAFF</div>
+              <div class="panel-title">ADD STUDENT VOLUNTEER</div>
 
               <div class="panel-options">
                 <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
@@ -86,7 +88,7 @@ include '../config/open_connect.php';
           <div>
             <button type="submit" class="btn btn-primary" name="Add_Rec" id="addRecord">
               <i class="fa fa-save"></i>
-              Add Staff
+              Add Student Volunteer
             </button>
           </div>
         </div>
@@ -96,11 +98,11 @@ include '../config/open_connect.php';
       <div class="col-md-10" style="float: right;">
       <div class="content-box-large">
         <div class="panel-heading">
-        <div class="panel-title">Staff</div>
+        <div class="panel-title">Student Volunteers</div>
       </div>
         <div class="panel-body">
 <?php
-$sql_query = "SELECT * FROM staff";
+$sql_query = "SELECT * FROM std_vol";
 // $result = $link->query($sql);
 ?>
           <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
@@ -108,7 +110,7 @@ $sql_query = "SELECT * FROM staff";
             <tr>
               <th>FIRST NAME</th>
               <th>LAST NAME</th>
-              <th>PROGRAM IN-CHARGE OF</th>
+              <th>VOLUNTEERED WITH</th>
               <th></th>
               <th></th>
             </tr>
@@ -123,9 +125,9 @@ $sql_query = "SELECT * FROM staff";
                     echo "<tr><td>".$theRow['First_Name'].
                     "</td><td>".$theRow['Last_Name'].
                     "</td><td>".$theRow_2['Prog_Name'].
-                    "</td><td style='text-align: center;'><a href='edit_staff.php?id=" . $theRow['Staff_ID'] . "'>
+                    "</td><td style='text-align: center;'><a href='edit_std_vol.php?id=" . $theRow['Std_Vol_ID'] . "'>
                     <span class='glyphicon glyphicon-pencil'></a></td>",
-                    "<td style='text-align: center;'><a href='../operate/del_staff.php?id=" . $theRow['Staff_ID'] . "'
+                    "<td style='text-align: center;'><a href='../operate/del_std_vol.php?id=" . $theRow['Std_Vol_ID'] . "'
                     onClick=\"return confirm('Wait a minute! Sure about this?');\">
                     <span class='glyphicon glyphicon-trash'></span></a></td></tr>\n";
                   }
@@ -140,6 +142,93 @@ $sql_query = "SELECT * FROM staff";
       </div>
       </div>
 
+<!-- <?php
+
+?> -->
+
+      <div class="col-md-10" style="float: right;">
+        <form action="../operate/add_time.php" method="post" id="timeForm">
+        <div class="content-box-large">
+          <div class="panel-heading">
+                <div class="panel-title">VOLUNTEER TIME SHEET</div>
+
+                <div class="panel-options">
+                  <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                  <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                </div>
+
+            </div>
+          <div class="panel-body">
+            <fieldset>
+              <div class="form-group">
+                <label>Volunteer First Name</label>
+                <p>
+                <select class="selectpicker" name="vol_first_name">
+                  <?php
+                  $sql_query = "SELECT Std_Vol_ID, First_Name FROM std_vol";
+                  if ($result = mysqli_query($link, $sql_query )) {
+                        while ($theRow = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                  echo "<option disabled selected value style='display:none'> -- select first name -- </option>";
+                  echo "<option value='" . $theRow['Std_Vol_ID'] . "'>" . $theRow['First_Name'] . "</option>";
+                    }
+                      }
+                  ?>
+                </select>
+                </div>
+                </p>
+                <div class="form-group">
+                  <label>Volunteer Last Name</label>
+                  <p>
+                  <select class="selectpicker" name="vol_last_name">
+                    <?php
+                    $sql_query = "SELECT Std_Vol_ID, Last_Name FROM std_vol";
+                    if ($result = mysqli_query($link, $sql_query )) {
+                          while ($theRow = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    echo "<option disabled selected value style='display:none'> -- select last name -- </option>";
+                    echo "<option value='" . $theRow['Std_Vol_ID'] . "'>" . $theRow['Last_Name'] . "</option>";
+                      }
+                        }
+                    ?>
+                  </select>
+                  </div>
+                  </p>
+              <div class="form-group">
+                <label>Program</label>
+                <p>
+                <select class="selectpicker" name="prog">
+                  <?php
+                  $sql = "SELECT Prog_ID, Prog_Name FROM programs";
+                  if ($result = mysqli_query($link, $sql)) {
+                    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                      echo "<option disabled selected value style='display:none'> -- select program -- </option>";
+                      echo "<option value='" . $row['Prog_ID'] . "'>".$row['Prog_Name']."</option>";
+                      }
+                  }
+                  ?>
+                </select>
+                </div>
+                </p>
+                <div class="form-group">
+                  <label>Volunteer Date</label>
+                    <p>
+                      <div class="bfh-datepicker" data-format="y-m-d" data-date="today"></div>
+                    </p>
+                  </div>
+                <div class="form-group">
+                  <label>Volunteer Time</label>
+                    <p>
+                      <div class="bfh-timepicker" data-mode="12h"></div>
+                    </p>
+                </div>
+            </fieldset>
+            </div>
+              <button type="submit" class="btn btn-primary" name="Add_Rec" id="addRecord">
+                <i class="fa fa-save"></i>
+                Clock It
+              </button>
+            </div>
+          </div>
+          </form>
         </div>
 
     </div>

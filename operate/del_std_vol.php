@@ -7,7 +7,7 @@ include '../config/open_connect.php';
 $id = $_GET['id'];
 mysqli_select_db($link, 'celts') or die(mysqli_error());
 
-$sql = "DELETE FROM staff WHERE Staff_ID = $id";
+$sql = "DELETE FROM std_vol WHERE Std_Vol_ID = $id";
 $result = mysqli_query($link, $sql);
 
 if (!$result) {
@@ -15,7 +15,7 @@ if (!$result) {
       exit;
 }
   else {
-      header('Location: ../page/del_staff_success.php');
+      header('Location: ../page/del_std_vol_success.php');
 }
 
 include '../config/close_connect.php';

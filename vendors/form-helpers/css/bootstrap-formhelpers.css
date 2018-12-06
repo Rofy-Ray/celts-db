@@ -1974,6 +1974,7 @@
 .bfh-datepicker-toggle > input[readonly] {
   cursor: inherit;
   background-color: inherit;
+  color: #000000;
 }
 
 .open > .bfh-datepicker-calendar {
@@ -2016,6 +2017,7 @@
 .bfh-timepicker-popover > table > tbody > tr > td > div > input {
   width: 42px !important;
   text-align: center;
+  color: #000000;
 }
 
 .bfh-timepicker {
@@ -2029,6 +2031,7 @@
 .bfh-timepicker-toggle > input[readonly] {
   cursor: inherit;
   background-color: inherit;
+  color: #000000;
 }
 
 .open > .bfh-timepicker-popover {

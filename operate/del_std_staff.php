@@ -15,7 +15,7 @@ if (!$result) {
       exit;
 }
   else {
-      header('Location: del_std_lab_success.php');
+      header('Location: ../page/del_std_lab_success.php');
 }
 
 include '../config/close_connect.php';

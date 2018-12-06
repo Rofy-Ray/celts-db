@@ -26,12 +26,12 @@ include '../config/open_connect.php';
                        <!-- Sub menu -->
                        <ul>
                           <li><a href="std_staff.php">Student Labor Staff</a></li>
-                          <li><a href="signup.html">Bonner Scholar</a></li>
+                          <li><a href="#">Bonner Scholar</a></li>
                           <li class="current"><a href="#">Staff</a></li>
-                          <li><a href="signup.html">Service Learning Student</a></li>
-                          <li><a href="signup.html">Faculty</a></li>
-                          <li><a href="signup.html">Student Volunteer</a></li>
-                          <li><a href="signup.html">Community Partner</a></li>
+                          <li><a href="#">Service Learning Student</a></li>
+                          <li><a href="#">Faculty</a></li>
+                          <li><a href="std_vol.php">Student Volunteer</a></li>
+                          <li><a href="#">Community Partner</a></li>
                       </ul>
                   </li>
               </ul>
@@ -53,7 +53,7 @@ if ($result = mysqli_query($link, $sql_query )) {
 ?>
 
     <div class="col-md-10">
-      <form action="../operate/update_std_lab_staff.php" method="post">
+      <form action="../operate/update_staff.php" method="post">
       <div class="content-box-large">
         <div class="panel-heading">
               <div class="panel-title">UPDATE STAFF</div>
@@ -81,9 +81,17 @@ if ($result = mysqli_query($link, $sql_query )) {
               <label>Program</label>
               <p>
               <select class="selectpicker" name="prog">
-                <option disabled "<?php if ($theRow["Prog_ID"] == '') echo "selected";?>" value style="display:none"> -- select an option -- </option>
-                <option "<?php if ($theRow["Prog_ID"] == '1') echo "selected";?>">Primary</option>
-                <option "<?php if ($theRow["Prog_ID"] == '2') echo "selected";?>">Secondary</option>
+                <?php
+                $sql = "SELECT Prog_ID, Prog_Name FROM programs";
+                if ($result = mysqli_query($link, $sql)) {
+                    echo "<option disabled selected value style='display:none'> -- select an option -- </option>\n";
+                  while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    echo "<option value='" . $row['Prog_ID'] . "' ";
+                    if ($theRow['Prog_ID'] == $row['Prog_ID']) echo "selected";
+                    echo ">".$row['Prog_Name']."</option>\n";
+                    }
+                }
+                ?>
               </select>
               </div>
               </p>

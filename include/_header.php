@@ -18,6 +18,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="../vendors/fullcalendar/fullcalendar.css" rel="stylesheet" media="screen">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link href="../vendors/form-helpers/css/bootstrap-formhelpers.min.css" rel="stylesheet">
+<link href="../vendors/form-helpers/css/bootstrap-formhelpers.css" rel="stylesheet">
 <link href="../vendors/select/bootstrap-select.min.css" rel="stylesheet">
 <link href="../vendors/tags/css/bootstrap-tags.css" rel="stylesheet">
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->

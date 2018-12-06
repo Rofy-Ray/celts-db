@@ -25,13 +25,13 @@ include '../config/open_connect.php';
                        </a>
                        <!-- Sub menu -->
                        <ul>
-                          <li class="current"><a href="#">Student Labor Staff</a></li>
-                          <li><a href="signup.html">Bonner Scholar</a></li>
+                          <li class="current"><a href="#">Labor Student Staff</a></li>
+                          <li><a href="#">Bonner Scholar</a></li>
                           <li><a href="staff.php">Staff</a></li>
-                          <li><a href="signup.html">Service Learning Student</a></li>
-                          <li><a href="signup.html">Faculty</a></li>
-                          <li><a href="signup.html">Student Volunteer</a></li>
-                          <li><a href="signup.html">Community Partner</a></li>
+                          <li><a href="#">Service Learning Student</a></li>
+                          <li><a href="#">Faculty</a></li>
+                          <li><a href="std_vol.php">Student Volunteer</a></li>
+                          <li><a href="#">Community Partner</a></li>
                       </ul>
                   </li>
               </ul>
@@ -92,6 +92,22 @@ include '../config/open_connect.php';
                 </select>
                 </div>
                 </p>
+                <div class="form-group">
+                  <label>Program</label>
+                  <p>
+                  <select class="selectpicker" name="prog">
+                    <?php
+                    $sql = "SELECT Prog_ID, Prog_Name FROM programs";
+                    if ($result = mysqli_query($link, $sql)) {
+                      while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                        echo "<option disabled selected value style='display:none'> -- select an option -- </option>";
+                        echo "<option value='" . $row['Prog_ID'] . "'>".$row['Prog_Name']."</option>";
+                        }
+                    }
+                    ?>
+                  </select>
+                  </div>
+                  </p>
             </div>
           </fieldset>
           <div>
@@ -105,54 +121,54 @@ include '../config/open_connect.php';
       </div>
 
       <div class="col-md-10" style="float: right;">
-        <div class="content-box-large">
-          <div class="panel-heading">
-          <div class="panel-title">Student Labor Staff</div>
-
-          <div class="panel-options">
-            <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-            <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
-          </div>
-        </div>
-          <div class="panel-body">
+      <div class="content-box-large">
+        <div class="panel-heading">
+        <div class="panel-title">Labor Student Staff</div>
+      </div>
+        <div class="panel-body">
 <?php
 $sql_query = "SELECT * FROM std_lab_staff";
 // $result = $link->query($sql);
 ?>
-            <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Labor Position</th>
-                      <th>Role</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <?php
-                  if ($result = mysqli_query($link, $sql_query )) {
-                        while ($theRow = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                          echo "<tr><td>".$theRow['First_Name'].
-                          "</td><td>".$theRow['Last_Name'].
-                          "</td><td>".$theRow['Labor_Pos'].
-                          "</td><td>".$theRow['Role'].
-                          "</td><td><a href='edit_std_staff.php?id=" . $theRow['Std_Staff_ID'] . "'>
-                          <button class='btn btn-info btn-xs'>Edit</button></a></td>",
-                          "<td><a href='del_std_staff.php?id=" . $theRow['Std_Staff_ID'] . "'
-                          onClick=\"return confirm('Wait a minute! Sure about this?');\">
-                          <button class='btn btn-danger btn-xs'>Delete</button></a></td></tr>\n";
-                        }
+          <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+          <thead>
+            <tr>
+              <th>FIRST NAME</th>
+              <th>LAST NAME</th>
+              <th>LABOR POSITION</th>
+              <th>ROLE</th>
+              <th>PROGRAM</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            if ($result = mysqli_query($link, $sql_query )) {
+                  while ($theRow = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    $sql_query_2 = "SELECT Prog_Name from programs WHERE Prog_ID =" .$theRow['Prog_ID']."";
+                    $result_2 = mysqli_query($link, $sql_query_2);
+                    $theRow_2 = mysqli_fetch_array($result_2, MYSQLI_ASSOC);
+                    echo "<tr class='gradeA'><td>".$theRow['First_Name'].
+                    "</td><td>".$theRow['Last_Name'].
+                    "</td><td>".$theRow['Labor_Pos'].
+                    "</td><td>".$theRow['Role'].
+                    "</td><td>".$theRow_2['Prog_Name'].
+                    "</td><td style='text-align: center;'><a href='edit_std_staff.php?id=" . $theRow['Std_Staff_ID'] . "'>
+                    <span class='glyphicon glyphicon-pencil'></span></a></td>",
+                    "<td style='text-align: center;'><a href='../operate/del_std_staff.php?id=" . $theRow['Std_Staff_ID'] . "'
+                    onClick=\"return confirm('Wait a minute! Sure about this?');\">
+                    <span class='glyphicon glyphicon-trash'></span></a></td></tr>\n";
                   }
-                         else {
-                            echo "No results found. Nothing to show!";
-                        }
-                  ?>
-                  </tbody>
-                </table>
-          </div>
+            }
+                   else {
+                      echo "No results found. Nothing to show!";
+                  }
+            ?>
+          </tbody>
+        </table>
         </div>
+      </div>
       </div>
 
     </div>

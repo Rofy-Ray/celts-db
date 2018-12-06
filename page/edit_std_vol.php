@@ -25,9 +25,9 @@ include '../config/open_connect.php';
                        </a>
                        <!-- Sub menu -->
                        <ul>
-                          <li class="current"><a href="#">Laor Student Staff</a></li>
+                          <li><a href="std_staff.php">Student Labor Staff</a></li>
                           <li><a href="#">Bonner Scholar</a></li>
-                          <li><a href="#">Staff</a></li>
+                          <li class="current"><a href="#">Staff</a></li>
                           <li><a href="#">Service Learning Student</a></li>
                           <li><a href="#">Faculty</a></li>
                           <li><a href="std_vol.php">Student Volunteer</a></li>
@@ -37,23 +37,26 @@ include '../config/open_connect.php';
               </ul>
            </div>
            <div style="margin-top:5px; margin-bottom:30px;">
-               <button type="button" class="btn btn-lg btn-block btn-primary" id="showFormButton">Add Student</button>
+               <button type="button" class="btn btn-lg btn-block btn-primary" id="staffButton">Add Student</button>
+             </div>
+           <div style="margin-top:5px; margin-bottom:30px;">
+               <button type="button" class="btn btn-lg btn-block btn-primary" id="timeButton">Record Time</button>
              </div>
     </div>
 
 <?php
 $id = $_GET['id'];
-$sql_query = "SELECT * FROM std_lab_staff where Std_Staff_ID = $id";
+$sql_query = "SELECT * FROM std_vol where Std_Vol_ID = $id";
 
 if ($result = mysqli_query($link, $sql_query )) {
       while ($theRow = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 ?>
 
     <div class="col-md-10">
-      <form action="../operate/update_std_lab_staff.php" method="post">
+      <form action="../operate/update_std_vol.php" method="post">
       <div class="content-box-large">
         <div class="panel-heading">
-              <div class="panel-title">UPDATE LABOR STUDENT STAFF</div>
+              <div class="panel-title">UPDATE STAFF</div>
 
               <div class="panel-options">
                 <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
@@ -75,44 +78,23 @@ if ($result = mysqli_query($link, $sql_query )) {
               value="<?php echo $theRow["Last_Name"];?>">
             </div>
             <div class="form-group">
-              <label>Labor Position</label>
+              <label>Program</label>
               <p>
-              <select class="selectpicker" name="lab_pos">
-                <option disabled <?php if ($theRow["Labor_Pos"] == '') echo "selected";?> value style="display:none"> -- select an option -- </option>
-                <option <?php if ($theRow["Labor_Pos"] == 'Primary') echo "selected";?>>Primary</option>
-                <option <?php if ($theRow["Labor_Pos"] == 'Secondary') echo "selected";?>>Secondary</option>
+              <select class="selectpicker" name="prog">
+                <?php
+                $sql = "SELECT Prog_ID, Prog_Name FROM programs";
+                if ($result = mysqli_query($link, $sql)) {
+                    echo "<option disabled selected value style='display:none'> -- select an option -- </option>\n";
+                  while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    echo "<option value='" . $row['Prog_ID'] . "' ";
+                    if ($theRow['Prog_ID'] == $row['Prog_ID']) echo "selected";
+                    echo ">".$row['Prog_Name']."</option>\n";
+                    }
+                }
+                ?>
               </select>
               </div>
               </p>
-              <div class="form-group">
-                <label>Role</label>
-                <p>
-                <select class="selectpicker" name="role">
-                  <option disabled "<?php if ($theRow["Role"] == '') echo "selected";?>" value style="display:none"> -- select an option -- </option>
-                  <option <?php if ($theRow["Role"] == 'Program Manager') echo "selected";?>>Program Manager</option>
-                  <option <?php if ($theRow["Role"] == 'Team Member') echo "selected";?>>Team Member</option>
-                  <option <?php if ($theRow["Role"] == 'Leadership') echo "selected";?>>Leadership</option>
-                </select>
-                </div>
-                </p>
-                <div class="form-group">
-                  <label>Program</label>
-                  <p>
-                  <select class="selectpicker" name="prog">
-                    <?php
-                    $sql = "SELECT Prog_ID, Prog_Name FROM programs";
-                    if ($result = mysqli_query($link, $sql)) {
-                        echo "<option disabled selected value style='display:none'> -- select an option -- </option>\n";
-                      while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                        echo "<option value='" . $row['Prog_ID'] . "' ";
-                        if ($theRow['Prog_ID'] == $row['Prog_ID']) echo "selected";
-                        echo ">".$row['Prog_Name']."</option>\n";
-                        }
-                    }
-                    ?>
-                  </select>
-                  </div>
-                  </p>
             </div>
           </fieldset>
           <div>
@@ -133,8 +115,11 @@ if ($result = mysqli_query($link, $sql_query )) {
   </div>
 
 <script>
-$("#showFormButton").click(function(){
+$("#staffButton").click(function(){
         $("#addForm").toggle();
+    });
+$("#timeButton").click(function(){
+        $("#timeForm").toggle();
     });
 </script>
 
