@@ -142,10 +142,6 @@ $sql_query = "SELECT * FROM std_vol";
       </div>
       </div>
 
-<!-- <?php
-
-?> -->
-
       <div class="col-md-10" style="float: right;">
         <form action="../operate/add_time.php" method="post" id="timeForm">
         <div class="content-box-large">
@@ -195,7 +191,7 @@ $sql_query = "SELECT * FROM std_vol";
               <div class="form-group">
                 <label>Program</label>
                 <p>
-                <select class="selectpicker" name="prog">
+                <select class="selectpicker" name="vol_prog">
                   <?php
                   $sql = "SELECT Prog_ID, Prog_Name FROM programs";
                   if ($result = mysqli_query($link, $sql)) {
@@ -211,13 +207,19 @@ $sql_query = "SELECT * FROM std_vol";
                 <div class="form-group">
                   <label>Volunteer Date</label>
                     <p>
-                      <div class="bfh-datepicker" data-format="y-m-d" data-date="today"></div>
+                      <div class="bfh-datepicker" data-format="y-m-d" data-date="today" name="vol_date"></div>
                     </p>
                   </div>
                 <div class="form-group">
-                  <label>Volunteer Time</label>
+                  <label>Volunteer Start Time</label>
                     <p>
-                      <div class="bfh-timepicker" data-mode="12h"></div>
+                      <div class="bfh-timepicker" data-mode="12h" name="vol_strt_time"></div>
+                    </p>
+                </div>
+                <div class="form-group">
+                  <label>Volunteer End Time</label>
+                    <p>
+                      <div class="bfh-timepicker" data-mode="12h" name="vol_end_time"></div>
                     </p>
                 </div>
             </fieldset>
