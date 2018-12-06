@@ -39,7 +39,7 @@ include '../include/sub_header.php';
     <div class="col-md-10">
       <form action="../operate/add_event.php" method="post">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="content-box-large">
             <div class="panel-heading">
             <div class="panel-title">Add Upcoming Events</div>
@@ -77,7 +77,7 @@ include '../include/sub_header.php';
           </div>
         </div>
 
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <div class="row">
             <div class="col-md-12">
               <div class="content-box-header">
@@ -112,7 +112,7 @@ include '../include/sub_header.php';
             </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="row">

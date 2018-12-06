@@ -19,11 +19,11 @@ include '../include/_header.php';
       <div class="wthree-text">
         <label class="anim">
           <input type="checkbox" class="checkbox" required="">
-          <span>I Agree To The Terms & Conditions</span>
+          <p>I Agree To The <a href="terms&conditions.pdf">Terms & Conditions</a></p>
         </label>
         <div class="clear"> </div>
       </div>
-      <input type="submit" value="SIGNUP" name="SignUp">
+      <input type="submit" value="SIGNUP" name="SignUp" style="width: 95%; margin: 10px auto;">
     </form>
     <p>Already have an Account? <a href="../index.php"> Login Now!</a></p>
   </div>
