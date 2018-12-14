@@ -22,4 +22,4 @@ Have fun checking out this database system.
 
 # This database system model has a lot of potential and there are more features that can be implemented and added later on.
 
-# A manual (for both user and programmer) is also available upon request that walks a user through the different functionalities of the system.
+# A manual (for both user and programmer) is also available upon request that walks a user through the different functionalities of the system and also inform the programmer of the different languages & technologies implemented in the system.
