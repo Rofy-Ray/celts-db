@@ -2,8 +2,8 @@
 /* I got this block of code from http://php.net/manual/en/function.mysqli-connect.php */
 
 $servername = "localhost";
-$username = "rofy";
-$password = "LoveCELTS";
+$username = "celts";
+$password = "Uw0Hujicaxr@c";
 $dbname = "celts";
 
 /* Connect to the DB */
