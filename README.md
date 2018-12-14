@@ -7,8 +7,7 @@ The database system is to help the center better manage the services and opportu
 The present model of this database system was designed with the administrator in mind and so the processes and capabilities that the system currently has are meant for the administrator(s) of the system.
 
 The current model allows basic functionality such as adding, editing, and deleting people along with key information in the different groups specified (Involvement section). It is important to also note that only three groups currently have interaction - Student Labor Staff, Staff and Student Volunteer.
-
-# The two editors - Event & Announcement - in the admin dashboard also do not submit entered data.
+The two editors - Event & Announcement - in the admin dashboard also do not submit entered data.
 
 Steps:
 
